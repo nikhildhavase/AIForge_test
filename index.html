@@ -3,62 +3,385 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My GitHub Website</title>
+  <title>AI Forge | AI Training & IT Services</title>
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f4f4f4;
+      line-height: 1.6;
       color: #222;
+      background: #f7f9fc;
     }
+
     header {
-      background: #24292f;
+      background: linear-gradient(135deg, #0f172a, #1d4ed8);
+      color: white;
+      padding: 20px 8%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(29, 78, 216, 0.8)),
+        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
       color: white;
       text-align: center;
-      padding: 60px 20px;
+      padding: 100px 8%;
     }
-    main {
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
       max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
+      margin: 0 auto 25px;
+      font-size: 1.1rem;
     }
-    .card {
-      background: white;
-      padding: 24px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-    button {
-      padding: 10px 16px;
-      border: none;
+
+    .btn {
+      display: inline-block;
+      background: #f59e0b;
+      color: #111827;
+      padding: 12px 24px;
+      text-decoration: none;
       border-radius: 8px;
-      cursor: pointer;
-    }
-    #message {
-      margin-top: 12px;
       font-weight: bold;
+    }
+
+    section {
+      padding: 70px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #0f172a;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 750px;
+      margin: 0 auto 40px;
+      color: #555;
+    }
+
+    .about,
+    .services,
+    .courses,
+    .why-us,
+    .contact {
+      background: white;
+      margin: 20px auto;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      color: #1d4ed8;
+    }
+
+    .card p {
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      background: #eff6ff;
+      border-left: 5px solid #2563eb;
+      padding: 18px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    ul.course-list {
+      margin-top: 10px;
+      padding-left: 18px;
+    }
+
+    ul.course-list li {
+      margin-bottom: 8px;
+    }
+
+    .contact-box {
+      text-align: center;
+    }
+
+    .contact-box p {
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+    }
+
+    footer {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .nav {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Welcome to My Website</h1>
-    <p>I created this directly on GitHub.</p>
+    <nav>
+      <div class="logo">AI Forge</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#courses">Courses</a>
+        <a href="#why-us">Why AI Forge</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
   </header>
 
-  <main>
-    <section class="card">
-      <h2>About</h2>
-      <p>This site is hosted with GitHub Pages.</p>
-      <button onclick="showMessage()">Click me</button>
-      <p id="message"></p>
-    </section>
-  </main>
+  <section class="hero">
+    <h1>Build the Future with AI Forge</h1>
+    <p>
+      AI Forge is a professional training and IT services company focused on Artificial Intelligence,
+      practical technology skills, and real-world business solutions. We help students,
+      professionals, and organizations build strong AI capabilities.
+    </p>
+    <a href="#courses" class="btn">Explore Courses</a>
+  </section>
 
-  <script>
-    function showMessage() {
-      document.getElementById("message").textContent = "It works!";
-    }
-  </script>
+  <section id="about" class="about">
+    <h2 class="section-title">About AI Forge</h2>
+    <p class="section-subtitle">
+      AI Forge delivers industry-relevant training and technology services with a strong focus
+      on Artificial Intelligence, machine learning, automation, and digital transformation.
+    </p>
+    <div class="highlight">
+      <p>
+        Our mission is to make AI learning practical, accessible, and career-oriented.
+        We combine technical knowledge, hands-on examples, and business relevance to help learners
+        and organizations use AI with confidence.
+      </p>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-subtitle">
+      We provide training and IT solutions designed for modern businesses and future-ready professionals.
+    </p>
+    <div class="grid">
+      <div class="card">
+        <h3>AI Training Programs</h3>
+        <p>
+          Instructor-led training sessions for students, working professionals, startups,
+          and corporate teams on AI and emerging technologies.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Corporate Workshops</h3>
+        <p>
+          Customized workshops on AI tools, machine learning basics, automation,
+          prompt engineering, and responsible AI for teams and organizations.
+        </p>
+      </div>
+      <div class="card">
+        <h3>IT Consulting Services</h3>
+        <p>
+          Support for businesses looking to integrate AI solutions, automate workflows,
+          improve operations, and adopt data-driven strategies.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Project Guidance</h3>
+        <p>
+          Mentoring and support for AI-related academic projects, capstone work,
+          proof-of-concept solutions, and practical implementation ideas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="courses" class="courses">
+    <h2 class="section-title">Courses We Teach</h2>
+    <p class="section-subtitle">
+      Our courses are designed to provide both conceptual understanding and hands-on skills.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Introduction to Artificial Intelligence</h3>
+        <p>
+          A beginner-friendly course covering AI fundamentals, applications, real-world use cases,
+          and the future of intelligent systems.
+        </p>
+        <ul class="course-list">
+          <li>AI concepts and terminology</li>
+          <li>Applications across industries</li>
+          <li>Ethics and responsible AI</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Machine Learning Fundamentals</h3>
+        <p>
+          Learn the foundations of machine learning, common algorithms, model training,
+          evaluation methods, and practical implementation concepts.
+        </p>
+        <ul class="course-list">
+          <li>Supervised and unsupervised learning</li>
+          <li>Model evaluation basics</li>
+          <li>Practical ML workflow</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Generative AI & Prompt Engineering</h3>
+        <p>
+          Understand how generative AI works and how to use prompt design techniques
+          effectively for business, education, and productivity.
+        </p>
+        <ul class="course-list">
+          <li>LLM fundamentals</li>
+          <li>Prompt design strategies</li>
+          <li>Use cases for content and automation</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>AI for Business & Productivity</h3>
+        <p>
+          A practical program for business owners and professionals who want to adopt AI tools
+          for communication, workflow automation, research, and decision support.
+        </p>
+        <ul class="course-list">
+          <li>AI tools for business tasks</li>
+          <li>Workflow automation ideas</li>
+          <li>Improving productivity with AI</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Data Analytics for AI Readiness</h3>
+        <p>
+          Build the data understanding needed for AI adoption by learning core analytics concepts,
+          data preparation, and reporting foundations.
+        </p>
+        <ul class="course-list">
+          <li>Data cleaning and preparation</li>
+          <li>Basic analytics concepts</li>
+          <li>Decision-making with data</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>AI Project Development Guidance</h3>
+        <p>
+          Ideal for learners who want to build AI projects with structured support,
+          practical ideas, and implementation direction.
+        </p>
+        <ul class="course-list">
+          <li>Project idea selection</li>
+          <li>Problem solving approach</li>
+          <li>Presentation and deployment guidance</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="why-us" class="why-us">
+    <h2 class="section-title">Why Choose AI Forge</h2>
+    <p class="section-subtitle">
+      We focus on practical learning, business value, and technology that can be applied in real situations.
+    </p>
+    <div class="grid">
+      <div class="card">
+        <h3>Practical Approach</h3>
+        <p>Our training is designed to connect theory with real-world usage and job-ready skills.</p>
+      </div>
+      <div class="card">
+        <h3>Industry Relevance</h3>
+        <p>We focus on topics that matter today, including generative AI, automation, and digital transformation.</p>
+      </div>
+      <div class="card">
+        <h3>Flexible Learning</h3>
+        <p>Suitable for students, professionals, entrepreneurs, and organizations seeking AI adoption.</p>
+      </div>
+      <div class="card">
+        <h3>End-to-End Support</h3>
+        <p>From training to consulting and project guidance, we help clients at every stage.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <p class="section-subtitle">
+      Interested in training, workshops, consulting, or course enrollment? Get in touch with AI Forge.
+    </p>
+    <div class="contact-box">
+      <p><strong>Company:</strong> AI Forge</p>
+      <p><strong>Email:</strong> info@aiforge.com</p>
+      <p><strong>Phone:</strong> +91 98765 43210</p>
+      <p><strong>Services:</strong> AI Training, Corporate Workshops, IT Consulting, Project Guidance</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 AI Forge. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>
