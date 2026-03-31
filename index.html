@@ -33,9 +33,149 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.10), transparent 25%),
+        radial-gradient(circle at 80% 30%, rgba(59, 130, 246, 0.08), transparent 25%),
+        linear-gradient(135deg, #eef4ff, #ffffff);
       color: var(--text);
       line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    body::before {
+      background-image:
+        linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: gridMove 18s linear infinite;
+    }
+
+    body::after {
+      background:
+        radial-gradient(circle, rgba(37, 99, 235, 0.10) 0%, transparent 60%) 10% 20% / 220px 220px no-repeat,
+        radial-gradient(circle, rgba(59, 130, 246, 0.10) 0%, transparent 60%) 80% 25% / 260px 260px no-repeat,
+        radial-gradient(circle, rgba(96, 165, 250, 0.08) 0%, transparent 60%) 60% 75% / 240px 240px no-repeat;
+      animation: floatGlow 10s ease-in-out infinite alternate;
+    }
+
+    .ai-particles {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .ai-particles span {
+      position: absolute;
+      display: block;
+      width: 8px;
+      height: 8px;
+      background: rgba(37, 99, 235, 0.18);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(37, 99, 235, 0.15);
+      animation: particleFloat linear infinite;
+    }
+
+    .ai-particles span:nth-child(1) {
+      left: 8%;
+      animation-duration: 18s;
+      animation-delay: 0s;
+      top: 85%;
+    }
+
+    .ai-particles span:nth-child(2) {
+      left: 18%;
+      animation-duration: 14s;
+      animation-delay: 2s;
+      top: 92%;
+    }
+
+    .ai-particles span:nth-child(3) {
+      left: 32%;
+      animation-duration: 20s;
+      animation-delay: 4s;
+      top: 88%;
+    }
+
+    .ai-particles span:nth-child(4) {
+      left: 48%;
+      animation-duration: 16s;
+      animation-delay: 1s;
+      top: 95%;
+    }
+
+    .ai-particles span:nth-child(5) {
+      left: 62%;
+      animation-duration: 19s;
+      animation-delay: 3s;
+      top: 90%;
+    }
+
+    .ai-particles span:nth-child(6) {
+      left: 76%;
+      animation-duration: 15s;
+      animation-delay: 5s;
+      top: 93%;
+    }
+
+    .ai-particles span:nth-child(7) {
+      left: 88%;
+      animation-duration: 17s;
+      animation-delay: 2s;
+      top: 87%;
+    }
+
+    .ai-particles span:nth-child(8) {
+      left: 54%;
+      animation-duration: 21s;
+      animation-delay: 6s;
+      top: 89%;
+    }
+
+    @keyframes gridMove {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(40px);
+      }
+    }
+
+    @keyframes floatGlow {
+      0% {
+        transform: translateY(0px) translateX(0px);
+      }
+      100% {
+        transform: translateY(-20px) translateX(10px);
+      }
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.4);
+        opacity: 0;
+      }
     }
 
     a {
@@ -49,11 +189,12 @@
     }
 
     header {
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.88);
       border-bottom: 1px solid var(--line);
       position: sticky;
       top: 0;
       z-index: 100;
+      backdrop-filter: blur(10px);
     }
 
     .nav {
@@ -101,7 +242,6 @@
 
     .hero {
       padding: 80px 0 60px;
-      background: linear-gradient(135deg, #eff6ff, #ffffff);
     }
 
     .hero-grid {
@@ -172,11 +312,19 @@
     }
 
     .hero-card {
-      background: var(--card);
+      background: rgba(255, 255, 255, 0.9);
       border: 1px solid var(--line);
       border-radius: 20px;
       padding: 28px;
       box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-image {
+      width: 100%;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      display: block;
     }
 
     .hero-card h3 {
@@ -225,11 +373,12 @@
     }
 
     .card {
-      background: var(--card);
+      background: rgba(255, 255, 255, 0.9);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 24px;
       box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
     }
 
     .card h3 {
@@ -241,6 +390,13 @@
     .card p {
       color: var(--muted);
       margin-bottom: 12px;
+    }
+
+    .card-image {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      display: block;
     }
 
     .tag {
@@ -264,13 +420,14 @@
     }
 
     .contact-box {
-      background: var(--card);
+      background: rgba(255, 255, 255, 0.92);
       border: 1px solid var(--line);
       border-radius: 20px;
       box-shadow: var(--shadow);
       padding: 28px;
       max-width: 760px;
       margin: 0 auto;
+      backdrop-filter: blur(8px);
     }
 
     form {
@@ -333,11 +490,12 @@
     }
 
     footer {
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.88);
       border-top: 1px solid var(--line);
       padding: 24px 0;
       text-align: center;
       color: var(--muted);
+      backdrop-filter: blur(8px);
     }
 
     @media (max-width: 900px) {
@@ -355,6 +513,17 @@
   </style>
 </head>
 <body>
+
+  <div class="ai-particles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
   <header>
     <div class="container nav">
@@ -384,9 +553,11 @@
       </div>
 
       <div class="hero-card">
-        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=80"
-       alt="AI technology illustration"
-       style="width:100%; border-radius:14px; margin-bottom:16px;" />
+        <img
+          class="hero-image"
+          src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=80"
+          alt="AI technology illustration"
+        />
         <h3>What AI Forge Offers</h3>
         <ul>
           <li>AI and Generative AI training programs</li>
@@ -434,17 +605,24 @@
 
       <div class="grid grid-3">
         <div class="card">
+          <img
+            class="card-image"
+            src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&w=600&q=80"
+            alt="AI training"
+          />
           <h3>AI Training Programs</h3>
           <p>Structured learning for students and professionals on AI, ML, and GenAI concepts.</p>
           <span class="tag">Practical</span>
           <span class="tag">Beginner Friendly</span>
         </div>
+
         <div class="card">
           <h3>Corporate Workshops</h3>
           <p>Customized workshops for teams on prompt engineering, AI tools, and business productivity.</p>
           <span class="tag">Upskilling</span>
           <span class="tag">Business Use Cases</span>
         </div>
+
         <div class="card">
           <h3>IT Consulting</h3>
           <p>Support for AI adoption, digital transformation, workflow improvement, and solution planning.</p>
@@ -484,6 +662,11 @@
         </div>
 
         <div class="card">
+          <img
+            class="card-image"
+            src="https://images.unsplash.com/photo-1673187736558-0e3f3d8d68d0?auto=format&fit=crop&w=600&q=80"
+            alt="Generative AI"
+          />
           <h3>Generative AI & Prompt Engineering</h3>
           <p>Learn how to use modern AI tools effectively in work and business.</p>
           <ul class="course-list">
