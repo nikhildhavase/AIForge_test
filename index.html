@@ -3,385 +3,1207 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Forge | AI Training & IT Services</title>
+  <title>AI Forge | AI Training & Intelligent IT Services</title>
+  <meta name="description" content="AI Forge provides AI training, generative AI courses, corporate workshops, and intelligent IT services for students, professionals, and organizations." />
   <style>
+    :root {
+      --bg: #07111f;
+      --bg-soft: #0b1728;
+      --panel: rgba(10, 20, 36, 0.72);
+      --panel-strong: rgba(10, 20, 36, 0.9);
+      --line: rgba(118, 148, 255, 0.18);
+      --text: #ecf3ff;
+      --muted: #9bb0d1;
+      --primary: #73e6ff;
+      --secondary: #7c8cff;
+      --accent: #b48cff;
+      --success: #7dffb1;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+      --radius: 20px;
+      --radius-sm: 14px;
+      --max: 1180px;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      color: #222;
-      background: #f7f9fc;
+    html {
+      scroll-behavior: smooth;
     }
 
-    header {
-      background: linear-gradient(135deg, #0f172a, #1d4ed8);
-      color: white;
-      padding: 20px 8%;
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(115, 230, 255, 0.12), transparent 28%),
+        radial-gradient(circle at 80% 15%, rgba(124, 140, 255, 0.14), transparent 24%),
+        radial-gradient(circle at 70% 70%, rgba(180, 140, 255, 0.10), transparent 24%),
+        linear-gradient(180deg, #040b14 0%, #07111f 45%, #091525 100%);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(115, 230, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(115, 230, 255, 0.045) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at center, black 45%, transparent 95%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .site-header {
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(5, 12, 22, 0.68);
+      border-bottom: 1px solid rgba(126, 151, 255, 0.12);
     }
 
-    nav {
+    .nav {
+      min-height: 78px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 18px;
     }
 
-    .logo {
-      font-size: 1.6rem;
-      font-weight: bold;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      position: relative;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), transparent 30%),
+        linear-gradient(135deg, rgba(115, 230, 255, 0.9), rgba(124, 140, 255, 0.95), rgba(180, 140, 255, 0.92));
+      box-shadow: 0 0 30px rgba(115, 230, 255, 0.18);
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border: 1px solid rgba(255,255,255,0.45);
+      border-radius: 10px;
+    }
+
+    .brand-mark::after {
+      inset: 16px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(6px);
+    }
+
+    .brand span {
+      font-size: 1.1rem;
     }
 
     .nav-links {
       display: flex;
+      align-items: center;
       gap: 20px;
       flex-wrap: wrap;
     }
 
     .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
+      color: var(--muted);
+      font-size: 0.96rem;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #06111c;
+      font-weight: 700;
+      box-shadow: 0 8px 30px rgba(115, 230, 255, 0.22);
     }
 
     .hero {
-      background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(29, 78, 216, 0.8)),
-        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-      color: white;
-      text-align: center;
-      padding: 100px 8%;
+      padding: 72px 0 48px;
+      position: relative;
     }
 
-    .hero h1 {
-      font-size: 3rem;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary);
+      font-size: 0.9rem;
+      padding: 8px 14px;
+      border: 1px solid rgba(115, 230, 255, 0.16);
+      border-radius: 999px;
+      background: rgba(10, 20, 36, 0.62);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
       margin-bottom: 20px;
     }
 
+    .eyebrow::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 14px rgba(125, 255, 177, 0.7);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 5vw, 4.9rem);
+      line-height: 1.02;
+      letter-spacing: -1.6px;
+      margin-bottom: 20px;
+      max-width: 11ch;
+    }
+
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, #ffffff 10%, var(--primary) 40%, #bcd1ff 65%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 40px rgba(115, 230, 255, 0.08);
+    }
+
     .hero p {
-      max-width: 800px;
-      margin: 0 auto 25px;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 650px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
     }
 
     .btn {
-      display: inline-block;
-      background: #f59e0b;
-      color: #111827;
-      padding: 12px 24px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-
-    section {
-      padding: 70px 8%;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 15px;
-      color: #0f172a;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      max-width: 750px;
-      margin: 0 auto 40px;
-      color: #555;
-    }
-
-    .about,
-    .services,
-    .courses,
-    .why-us,
-    .contact {
-      background: white;
-      margin: 20px auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 20px;
       border-radius: 14px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: 0.25s ease;
+      cursor: pointer;
     }
 
-    .grid {
+    .btn-primary {
+      color: #06111c;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 14px 34px rgba(115, 230, 255, 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 36px rgba(115, 230, 255, 0.28);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      border-color: rgba(155, 176, 209, 0.22);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(115, 230, 255, 0.35);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .stats {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 720px;
     }
 
-    .card {
-      background: #f8fafc;
-      border-radius: 12px;
-      padding: 24px;
-      border: 1px solid #e5e7eb;
-    }
-
-    .card h3 {
-      margin-bottom: 12px;
-      color: #1d4ed8;
-    }
-
-    .card p {
-      color: #444;
-      margin-bottom: 10px;
-    }
-
-    .highlight {
-      background: #eff6ff;
-      border-left: 5px solid #2563eb;
+    .stat {
       padding: 18px;
-      border-radius: 8px;
-      margin-top: 20px;
+      border-radius: 18px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
     }
 
-    ul.course-list {
-      margin-top: 10px;
-      padding-left: 18px;
+    .stat strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 6px;
+      color: white;
     }
 
-    ul.course-list li {
+    .stat span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .visual-card {
+      position: relative;
+      min-height: 560px;
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(11, 23, 40, 0.95), rgba(8, 17, 31, 0.92)),
+        radial-gradient(circle at top left, rgba(115, 230, 255, 0.12), transparent 28%);
+      border: 1px solid rgba(118, 148, 255, 0.18);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .visual-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -20% 15% auto;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(115, 230, 255, 0.22), transparent 65%);
+      filter: blur(10px);
+    }
+
+    .visual-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(115, 230, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(115, 230, 255, 0.06) 1px, transparent 1px);
+      background-size: 26px 26px;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .brain {
+      position: absolute;
+      top: 58px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(320px, 78%);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.12), rgba(124, 140, 255, 0.06) 45%, transparent 62%),
+        radial-gradient(circle at 35% 30%, rgba(115, 230, 255, 0.28), transparent 24%),
+        radial-gradient(circle at 65% 35%, rgba(180, 140, 255, 0.24), transparent 24%);
+      border: 1px solid rgba(115, 230, 255, 0.18);
+      box-shadow:
+        inset 0 0 50px rgba(115, 230, 255, 0.08),
+        0 0 60px rgba(124, 140, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brain::before,
+    .brain::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(115, 230, 255, 0.24);
+      inset: 20px;
+    }
+
+    .brain::after {
+      inset: 52px;
+      border-color: rgba(180, 140, 255, 0.2);
+    }
+
+    .brain-core {
+      width: 42%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(115, 230, 255, 0.92), rgba(124, 140, 255, 0.45), transparent 72%);
+      box-shadow: 0 0 50px rgba(115, 230, 255, 0.36);
+    }
+
+    .node {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), white);
+      box-shadow: 0 0 16px rgba(115, 230, 255, 0.8);
+    }
+
+    .line {
+      position: absolute;
+      height: 1px;
+      transform-origin: left center;
+      background: linear-gradient(90deg, rgba(115, 230, 255, 0.7), rgba(124, 140, 255, 0.15));
+    }
+
+    .chip {
+      position: absolute;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(7, 16, 28, 0.82);
+      border: 1px solid rgba(118, 148, 255, 0.18);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(16px);
+      min-width: 170px;
+    }
+
+    .chip small {
+      display: block;
+      color: var(--primary);
+      letter-spacing: 0.3px;
+      font-size: 0.78rem;
+      margin-bottom: 6px;
+    }
+
+    .chip strong {
+      display: block;
+      font-size: 1rem;
+      color: white;
+      margin-bottom: 4px;
+    }
+
+    .chip span {
+      color: var(--muted);
+      font-size: 0.9rem;
+      display: block;
+    }
+
+    .chip-1 { top: 60px; left: 28px; }
+    .chip-2 { top: 190px; right: 22px; }
+    .chip-3 { bottom: 40px; left: 38px; }
+    .chip-4 { bottom: 86px; right: 30px; }
+
+    .section {
+      padding: 42px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.8px;
       margin-bottom: 8px;
     }
 
-    .contact-box {
-      text-align: center;
+    .section-head p {
+      color: var(--muted);
+      max-width: 720px;
     }
 
-    .contact-box p {
+    .glass-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .about-card {
+      padding: 28px;
+    }
+
+    .about-grid,
+    .services-grid,
+    .courses-grid,
+    .benefit-grid,
+    .contact-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .about-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: stretch;
+    }
+
+    .info-box {
+      padding: 24px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(118, 148, 255, 0.15);
+    }
+
+    .info-box h3 {
       margin-bottom: 10px;
-      font-size: 1.05rem;
+      font-size: 1.15rem;
     }
 
-    footer {
-      background: #0f172a;
+    .info-box p,
+    .info-box li {
+      color: var(--muted);
+    }
+
+    .services-grid,
+    .courses-grid,
+    .benefit-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .service-card,
+    .course-card,
+    .benefit-card {
+      padding: 24px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015));
+      border: 1px solid rgba(118, 148, 255, 0.15);
+      transition: 0.25s ease;
+    }
+
+    .service-card:hover,
+    .course-card:hover,
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(115, 230, 255, 0.28);
+      box-shadow: 0 18px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .icon-box {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, rgba(115, 230, 255, 0.18), rgba(124, 140, 255, 0.18));
+      border: 1px solid rgba(115, 230, 255, 0.16);
+      color: var(--primary);
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    .service-card h3,
+    .course-card h3,
+    .benefit-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.12rem;
+    }
+
+    .service-card p,
+    .course-card p,
+    .benefit-card p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(115, 230, 255, 0.08);
+      color: var(--primary);
+      font-size: 0.82rem;
+      border: 1px solid rgba(115, 230, 255, 0.12);
+      margin: 4px 6px 0 0;
+    }
+
+    .course-card ul {
+      padding-left: 18px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .course-card li {
+      margin-bottom: 8px;
+    }
+
+    .contact-wrap {
+      padding: 28px;
+    }
+
+    .contact-grid {
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: start;
+    }
+
+    .contact-panel {
+      padding: 24px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(118, 148, 255, 0.15);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .contact-item {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(118, 148, 255, 0.12);
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 4px;
       color: white;
-      text-align: center;
-      padding: 25px;
-      margin-top: 30px;
     }
 
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.2rem;
+    .contact-item span {
+      color: var(--muted);
+      word-break: break-word;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.93rem;
+      margin-bottom: 7px;
+      color: #dce9ff;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(118, 148, 255, 0.16);
+      background: rgba(5, 12, 22, 0.72);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 14px 14px;
+      outline: none;
+      font: inherit;
+      transition: 0.2s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(115, 230, 255, 0.45);
+      box-shadow: 0 0 0 4px rgba(115, 230, 255, 0.08);
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .form-note {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .submit-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .success-message {
+      display: none;
+      padding: 12px 14px;
+      border-radius: 12px;
+      color: #dffff0;
+      background: rgba(125, 255, 177, 0.1);
+      border: 1px solid rgba(125, 255, 177, 0.22);
+      font-size: 0.95rem;
+    }
+
+    .site-footer {
+      padding: 26px 0 44px;
+      color: var(--muted);
+    }
+
+    .footer-box {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 12px;
+      border-top: 1px solid rgba(118, 148, 255, 0.12);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    @media (max-width: 1050px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
       }
 
-      .nav {
-        flex-direction: column;
+      .services-grid,
+      .courses-grid,
+      .benefit-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .visual-card {
+        min-height: 500px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        padding: 10px 0;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .hero {
+        padding-top: 38px;
+      }
+
+      .stats,
+      .services-grid,
+      .courses-grid,
+      .benefit-grid,
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .visual-card {
+        min-height: 460px;
+      }
+
+      .chip {
+        min-width: 145px;
+        padding: 12px 12px;
+      }
+
+      .chip-1 { top: 24px; left: 12px; }
+      .chip-2 { top: 150px; right: 12px; }
+      .chip-3 { bottom: 24px; left: 12px; }
+      .chip-4 { bottom: 88px; right: 12px; }
     }
   </style>
 </head>
 <body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#" class="brand">
+        <div class="brand-mark"></div>
+        <span>AI Forge</span>
+      </a>
 
-  <header>
-    <nav>
-      <div class="logo">AI Forge</div>
-      <div class="nav-links">
+      <nav class="nav-links">
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#courses">Courses</a>
-        <a href="#why-us">Why AI Forge</a>
         <a href="#contact">Contact</a>
-      </div>
-    </nav>
+        <a href="#contact" class="nav-cta">Book Consultation</a>
+      </nav>
+    </div>
   </header>
 
-  <section class="hero">
-    <h1>Build the Future with AI Forge</h1>
-    <p>
-      AI Forge is a professional training and IT services company focused on Artificial Intelligence,
-      practical technology skills, and real-world business solutions. We help students,
-      professionals, and organizations build strong AI capabilities.
-    </p>
-    <a href="#courses" class="btn">Explore Courses</a>
-  </section>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">AI Training • Intelligent IT Services • Corporate Enablement</div>
+          <h1>Forge <span class="gradient">AI capability</span> for people and business.</h1>
+          <p>
+            AI Forge helps students, professionals, teams, and organizations learn practical Artificial Intelligence,
+            deploy modern AI workflows, and build future-ready digital capability through training, workshops,
+            consulting, and implementation support.
+          </p>
 
-  <section id="about" class="about">
-    <h2 class="section-title">About AI Forge</h2>
-    <p class="section-subtitle">
-      AI Forge delivers industry-relevant training and technology services with a strong focus
-      on Artificial Intelligence, machine learning, automation, and digital transformation.
-    </p>
-    <div class="highlight">
-      <p>
-        Our mission is to make AI learning practical, accessible, and career-oriented.
-        We combine technical knowledge, hands-on examples, and business relevance to help learners
-        and organizations use AI with confidence.
-      </p>
+          <div class="hero-actions">
+            <a href="#courses" class="btn btn-primary">Explore Courses</a>
+            <a href="#contact" class="btn btn-secondary">Request a Callback</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>AI Courses</strong>
+              <span>Structured learning paths from fundamentals to applied GenAI</span>
+            </div>
+            <div class="stat">
+              <strong>Business Focus</strong>
+              <span>Training and services aligned to productivity, automation, and impact</span>
+            </div>
+            <div class="stat">
+              <strong>Hands-On Delivery</strong>
+              <span>Practical workshops, demonstrations, and project-oriented guidance</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="visual-card">
+            <div class="brain">
+              <div class="brain-core"></div>
+            </div>
+
+            <div class="chip chip-1">
+              <small>Training Layer</small>
+              <strong>AI Learning Paths</strong>
+              <span>Practical, industry-relevant, and beginner-friendly.</span>
+            </div>
+
+            <div class="chip chip-2">
+              <small>Capability Layer</small>
+              <strong>Corporate Workshops</strong>
+              <span>Upskill teams on GenAI, automation, and responsible use.</span>
+            </div>
+
+            <div class="chip chip-3">
+              <small>Solution Layer</small>
+              <strong>IT Services</strong>
+              <span>Guidance for AI adoption, process optimization, and digital transformation.</span>
+            </div>
+
+            <div class="chip chip-4">
+              <small>Execution Layer</small>
+              <strong>Project Support</strong>
+              <span>Mentoring, implementation direction, and business use-case mapping.</span>
+            </div>
+
+            <div class="node" style="top: 108px; left: 46%;"></div>
+            <div class="node" style="top: 168px; left: 29%;"></div>
+            <div class="node" style="top: 166px; right: 28%;"></div>
+            <div class="node" style="top: 258px; left: 22%;"></div>
+            <div class="node" style="top: 264px; right: 24%;"></div>
+            <div class="node" style="bottom: 120px; left: 42%;"></div>
+
+            <div class="line" style="top: 113px; left: 34%; width: 80px; transform: rotate(18deg);"></div>
+            <div class="line" style="top: 170px; left: 32%; width: 118px; transform: rotate(-12deg);"></div>
+            <div class="line" style="top: 176px; right: 30%; width: 100px; transform: rotate(188deg);"></div>
+            <div class="line" style="top: 266px; left: 26%; width: 130px; transform: rotate(-8deg);"></div>
+            <div class="line" style="top: 271px; right: 24%; width: 104px; transform: rotate(182deg);"></div>
+            <div class="line" style="bottom: 125px; left: 41%; width: 86px; transform: rotate(-88deg);"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>About AI Forge</h2>
+            <p>
+              AI Forge is positioned as a modern AI training and intelligent IT services company
+              helping learners and organizations understand, adopt, and apply AI in practical ways.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass-card about-card">
+          <div class="about-grid">
+            <div class="info-box">
+              <h3>What We Do</h3>
+              <p>
+                We design and deliver AI-focused learning experiences and IT services centered around
+                Artificial Intelligence, Generative AI, business productivity, digital transformation,
+                and project guidance. Our approach is built for real-world application, not just theory.
+              </p>
+            </div>
+
+            <div class="info-box">
+              <h3>Who We Serve</h3>
+              <p>
+                Students, working professionals, entrepreneurs, training institutions, and business teams
+                looking to build AI awareness, operational capability, and implementation confidence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Services Designed for AI Readiness</h2>
+            <p>
+              From skill building to implementation support, AI Forge provides services that help
+              clients move from curiosity to capability.
+            </p>
+          </div>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card glass-card">
+            <div class="icon-box">01</div>
+            <h3>AI Training Programs</h3>
+            <p>
+              Structured training for students and professionals covering AI basics,
+              machine learning concepts, GenAI tools, and applied AI workflows.
+            </p>
+            <span class="tag">Beginner to Intermediate</span>
+            <span class="tag">Practical Learning</span>
+          </article>
+
+          <article class="service-card glass-card">
+            <div class="icon-box">02</div>
+            <h3>Corporate AI Workshops</h3>
+            <p>
+              Customized workshops for organizations to introduce Generative AI,
+              prompt engineering, automation use cases, and responsible AI practices.
+            </p>
+            <span class="tag">Team Upskilling</span>
+            <span class="tag">Business Use Cases</span>
+          </article>
+
+          <article class="service-card glass-card">
+            <div class="icon-box">03</div>
+            <h3>IT & AI Consulting</h3>
+            <p>
+              Consulting support for AI adoption strategy, workflow optimization,
+              tool selection, solution planning, and digital capability enhancement.
+            </p>
+            <span class="tag">Adoption Strategy</span>
+            <span class="tag">Implementation Guidance</span>
+          </article>
+
+          <article class="service-card glass-card">
+            <div class="icon-box">04</div>
+            <h3>Academic & Capstone Guidance</h3>
+            <p>
+              Project mentoring for learners working on AI-related assignments,
+              demos, prototypes, and final-year or showcase projects.
+            </p>
+            <span class="tag">Mentorship</span>
+            <span class="tag">Project Support</span>
+          </article>
+
+          <article class="service-card glass-card">
+            <div class="icon-box">05</div>
+            <h3>AI for Business Productivity</h3>
+            <p>
+              Programs for business owners and teams on using AI tools to improve research,
+              communication, drafting, content workflows, and internal productivity.
+            </p>
+            <span class="tag">Operations</span>
+            <span class="tag">Automation</span>
+          </article>
+
+          <article class="service-card glass-card">
+            <div class="icon-box">06</div>
+            <h3>Technology Awareness Sessions</h3>
+            <p>
+              High-value sessions introducing emerging AI trends, possibilities,
+              limitations, and how organizations can prepare for change.
+            </p>
+            <span class="tag">Executive Awareness</span>
+            <span class="tag">Future Readiness</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="courses" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Courses Offered by AI Forge</h2>
+            <p>
+              A standard course catalog focused on practical learning, business relevance,
+              and clear progression from fundamentals to application.
+            </p>
+          </div>
+        </div>
+
+        <div class="courses-grid">
+          <article class="course-card glass-card">
+            <h3>Introduction to Artificial Intelligence</h3>
+            <p>
+              A foundation course for anyone starting their AI journey and wanting
+              clear understanding of core concepts and real-world use.
+            </p>
+            <ul>
+              <li>What AI is and where it is used</li>
+              <li>Types of AI and business applications</li>
+              <li>Ethics, limitations, and responsible use</li>
+            </ul>
+          </article>
+
+          <article class="course-card glass-card">
+            <h3>Machine Learning Fundamentals</h3>
+            <p>
+              A structured introduction to machine learning concepts, terminology,
+              and workflow understanding for practical learners.
+            </p>
+            <ul>
+              <li>Supervised and unsupervised learning</li>
+              <li>Training, testing, and evaluation basics</li>
+              <li>Common models and problem types</li>
+            </ul>
+          </article>
+
+          <article class="course-card glass-card">
+            <h3>Generative AI & Prompt Engineering</h3>
+            <p>
+              Learn how modern Generative AI works and how to use prompts effectively
+              for better outcomes in work, learning, and business.
+            </p>
+            <ul>
+              <li>LLM basics and prompting strategies</li>
+              <li>Prompt patterns for productivity</li>
+              <li>Responsible and effective AI usage</li>
+            </ul>
+          </article>
+
+          <article class="course-card glass-card">
+            <h3>AI for Business & Productivity</h3>
+            <p>
+              Designed for business owners, managers, and professionals who want
+              to apply AI in everyday work and decision support.
+            </p>
+            <ul>
+              <li>AI tools for communication and research</li>
+              <li>Content assistance and workflow support</li>
+              <li>AI adoption opportunities in business</li>
+            </ul>
+          </article>
+
+          <article class="course-card glass-card">
+            <h3>Data Analytics for AI Readiness</h3>
+            <p>
+              Build essential data understanding before moving deeper into AI and automation.
+            </p>
+            <ul>
+              <li>Data preparation and structured thinking</li>
+              <li>Data-driven decisions and insight basics</li>
+              <li>Analytics foundations for AI projects</li>
+            </ul>
+          </article>
+
+          <article class="course-card glass-card">
+            <h3>AI Project Development Guidance</h3>
+            <p>
+              A support-oriented offering for learners and teams building practical AI-based project ideas.
+            </p>
+            <ul>
+              <li>Project scoping and use-case definition</li>
+              <li>Planning demos and proof-of-concepts</li>
+              <li>Presentation and implementation guidance</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Why Organizations and Learners Choose AI Forge</h2>
+            <p>
+              The focus is not only on learning AI, but on using it meaningfully.
+            </p>
+          </div>
+        </div>
+
+        <div class="benefit-grid">
+          <article class="benefit-card glass-card">
+            <h3>Practical First</h3>
+            <p>Every program is designed to connect concepts with use cases, workflows, and outcomes.</p>
+          </article>
+
+          <article class="benefit-card glass-card">
+            <h3>Modern AI Focus</h3>
+            <p>Training includes relevant topics such as Generative AI, prompting, digital productivity, and adoption strategy.</p>
+          </article>
+
+          <article class="benefit-card glass-card">
+            <h3>Flexible Audience Fit</h3>
+            <p>Useful for students, professionals, institutions, startups, and corporate teams.</p>
+          </article>
+
+          <article class="benefit-card glass-card">
+            <h3>Business Value Orientation</h3>
+            <p>Services are framed around capability building, transformation, and operational improvement.</p>
+          </article>
+
+          <article class="benefit-card glass-card">
+            <h3>Consulting + Training</h3>
+            <p>Clients can learn AI and also receive guidance on how to apply it in real settings.</p>
+          </article>
+
+          <article class="benefit-card glass-card">
+            <h3>Clear, Professional Delivery</h3>
+            <p>A standard company presentation suitable for a modern AI training and services brand.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Contact AI Forge</h2>
+            <p>
+              Use the form below for course inquiries, workshop bookings, consultation requests,
+              and training partnerships.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass-card contact-wrap">
+          <div class="contact-grid">
+            <div class="contact-panel">
+              <h3 style="margin-bottom: 10px;">Let’s Build AI Capability</h3>
+              <p class="muted">
+                Reach out if you want to discuss AI training, consulting, custom workshops,
+                project mentoring, or digital transformation support.
+              </p>
+
+              <div class="contact-list">
+                <div class="contact-item">
+                  <strong>Company</strong>
+                  <span>AI Forge</span>
+                </div>
+                <div class="contact-item">
+                  <strong>Email</strong>
+                  <span>info@aiforge.com</span>
+                </div>
+                <div class="contact-item">
+                  <strong>Phone</strong>
+                  <span>+91 98765 43210</span>
+                </div>
+                <div class="contact-item">
+                  <strong>Core Focus</strong>
+                  <span>AI training, GenAI workshops, IT services, project guidance</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-panel">
+              <form id="contactForm">
+                <div class="form-row">
+                  <div>
+                    <label for="name">Full Name</label>
+                    <input id="name" name="name" type="text" placeholder="Your name" required />
+                  </div>
+                  <div>
+                    <label for="email">Email Address</label>
+                    <input id="email" name="email" type="email" placeholder="you@example.com" required />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div>
+                    <label for="phone">Phone Number</label>
+                    <input id="phone" name="phone" type="text" placeholder="+91..." />
+                  </div>
+                  <div>
+                    <label for="interest">Interested In</label>
+                    <select id="interest" name="interest">
+                      <option>AI Training Program</option>
+                      <option>Corporate Workshop</option>
+                      <option>IT / AI Consulting</option>
+                      <option>Project Guidance</option>
+                      <option>General Inquiry</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message" placeholder="Tell us what you are looking for..." required></textarea>
+                </div>
+
+                <div class="submit-wrap">
+                  <button type="submit" class="btn btn-primary">Send Inquiry</button>
+                  <div class="success-message" id="successMessage">
+                    Your inquiry has been captured. Replace this demo form with your real email/form service to receive messages.
+                  </div>
+                </div>
+
+                <p class="form-note">
+                  This is a front-end demo form. To receive real submissions, connect it to Formspree, EmailJS, Netlify Forms, or a backend service.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-box">
+      <div>© 2026 AI Forge. All rights reserved.</div>
+      <div>AI Training • Generative AI • Intelligent IT Services</div>
     </div>
-  </section>
-
-  <section id="services" class="services">
-    <h2 class="section-title">Our Services</h2>
-    <p class="section-subtitle">
-      We provide training and IT solutions designed for modern businesses and future-ready professionals.
-    </p>
-    <div class="grid">
-      <div class="card">
-        <h3>AI Training Programs</h3>
-        <p>
-          Instructor-led training sessions for students, working professionals, startups,
-          and corporate teams on AI and emerging technologies.
-        </p>
-      </div>
-      <div class="card">
-        <h3>Corporate Workshops</h3>
-        <p>
-          Customized workshops on AI tools, machine learning basics, automation,
-          prompt engineering, and responsible AI for teams and organizations.
-        </p>
-      </div>
-      <div class="card">
-        <h3>IT Consulting Services</h3>
-        <p>
-          Support for businesses looking to integrate AI solutions, automate workflows,
-          improve operations, and adopt data-driven strategies.
-        </p>
-      </div>
-      <div class="card">
-        <h3>Project Guidance</h3>
-        <p>
-          Mentoring and support for AI-related academic projects, capstone work,
-          proof-of-concept solutions, and practical implementation ideas.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="courses" class="courses">
-    <h2 class="section-title">Courses We Teach</h2>
-    <p class="section-subtitle">
-      Our courses are designed to provide both conceptual understanding and hands-on skills.
-    </p>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Introduction to Artificial Intelligence</h3>
-        <p>
-          A beginner-friendly course covering AI fundamentals, applications, real-world use cases,
-          and the future of intelligent systems.
-        </p>
-        <ul class="course-list">
-          <li>AI concepts and terminology</li>
-          <li>Applications across industries</li>
-          <li>Ethics and responsible AI</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Machine Learning Fundamentals</h3>
-        <p>
-          Learn the foundations of machine learning, common algorithms, model training,
-          evaluation methods, and practical implementation concepts.
-        </p>
-        <ul class="course-list">
-          <li>Supervised and unsupervised learning</li>
-          <li>Model evaluation basics</li>
-          <li>Practical ML workflow</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Generative AI & Prompt Engineering</h3>
-        <p>
-          Understand how generative AI works and how to use prompt design techniques
-          effectively for business, education, and productivity.
-        </p>
-        <ul class="course-list">
-          <li>LLM fundamentals</li>
-          <li>Prompt design strategies</li>
-          <li>Use cases for content and automation</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>AI for Business & Productivity</h3>
-        <p>
-          A practical program for business owners and professionals who want to adopt AI tools
-          for communication, workflow automation, research, and decision support.
-        </p>
-        <ul class="course-list">
-          <li>AI tools for business tasks</li>
-          <li>Workflow automation ideas</li>
-          <li>Improving productivity with AI</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Data Analytics for AI Readiness</h3>
-        <p>
-          Build the data understanding needed for AI adoption by learning core analytics concepts,
-          data preparation, and reporting foundations.
-        </p>
-        <ul class="course-list">
-          <li>Data cleaning and preparation</li>
-          <li>Basic analytics concepts</li>
-          <li>Decision-making with data</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>AI Project Development Guidance</h3>
-        <p>
-          Ideal for learners who want to build AI projects with structured support,
-          practical ideas, and implementation direction.
-        </p>
-        <ul class="course-list">
-          <li>Project idea selection</li>
-          <li>Problem solving approach</li>
-          <li>Presentation and deployment guidance</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="why-us" class="why-us">
-    <h2 class="section-title">Why Choose AI Forge</h2>
-    <p class="section-subtitle">
-      We focus on practical learning, business value, and technology that can be applied in real situations.
-    </p>
-    <div class="grid">
-      <div class="card">
-        <h3>Practical Approach</h3>
-        <p>Our training is designed to connect theory with real-world usage and job-ready skills.</p>
-      </div>
-      <div class="card">
-        <h3>Industry Relevance</h3>
-        <p>We focus on topics that matter today, including generative AI, automation, and digital transformation.</p>
-      </div>
-      <div class="card">
-        <h3>Flexible Learning</h3>
-        <p>Suitable for students, professionals, entrepreneurs, and organizations seeking AI adoption.</p>
-      </div>
-      <div class="card">
-        <h3>End-to-End Support</h3>
-        <p>From training to consulting and project guidance, we help clients at every stage.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="contact">
-    <h2 class="section-title">Contact Us</h2>
-    <p class="section-subtitle">
-      Interested in training, workshops, consulting, or course enrollment? Get in touch with AI Forge.
-    </p>
-    <div class="contact-box">
-      <p><strong>Company:</strong> AI Forge</p>
-      <p><strong>Email:</strong> info@aiforge.com</p>
-      <p><strong>Phone:</strong> +91 98765 43210</p>
-      <p><strong>Services:</strong> AI Training, Corporate Workshops, IT Consulting, Project Guidance</p>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2026 AI Forge. All rights reserved.</p>
   </footer>
 
+  <script>
+    const form = document.getElementById("contactForm");
+    const successMessage = document.getElementById("successMessage");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      successMessage.style.display = "block";
+      form.reset();
+    });
+  </script>
 </body>
 </html>
