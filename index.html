@@ -373,59 +373,6 @@
       box-shadow: var(--shadow);
     }
 
-    form {
-      display: grid;
-      gap: 16px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 700;
-      font-size: 0.94rem;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: 1px solid rgba(130, 160, 255, 0.14);
-      background: rgba(255, 255, 255, 0.03);
-      color: var(--text);
-      font: inherit;
-    }
-
-    textarea {
-      min-height: 130px;
-      resize: vertical;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      outline: none;
-      border-color: rgba(90, 169, 255, 0.45);
-      box-shadow: 0 0 0 4px rgba(90, 169, 255, 0.08);
-    }
-
-    .success-message {
-      display: none;
-      padding: 12px 14px;
-      border-radius: 10px;
-      background: rgba(34, 197, 94, 0.12);
-      border: 1px solid rgba(34, 197, 94, 0.24);
-      color: #c6f6d5;
-      font-size: 0.95rem;
-    }
-
     .contact-note {
       color: var(--muted);
       font-size: 0.92rem;
@@ -441,8 +388,7 @@
     @media (max-width: 940px) {
       .hero-grid,
       .grid-3,
-      .grid-4,
-      .form-row {
+      .grid-4 {
         grid-template-columns: 1fr;
       }
 
@@ -641,49 +587,24 @@
       </div>
 
       <div class="contact-box">
-        <form id="contactForm">
-          <div class="form-row">
-            <div>
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" placeholder="Your name" required />
-            </div>
-            <div>
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="you@example.com" required />
-            </div>
-          </div>
+        <div class="google-form-wrapper" style="width: 100%; height: 1150px; border-radius: 12px; overflow: hidden; background: #fff;">
+          <iframe 
+            src="https://docs.google.com/forms/d/e/1FAIpQLScOFIGZwlZNbl6uUDDQPumLW1dxi1LH2qOPF6pZdJ-nXlbVKw/viewform?embedded=true" 
+            width="100%" 
+            height="1150" 
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0">
+            Loading…
+          </iframe>
+        </div>
 
-          <div class="form-row">
-            <div>
-              <label for="phone">Phone Number</label>
-              <input type="text" id="phone" name="phone" placeholder="+91..." />
-            </div>
-            <div>
-              <label for="interest">Interested In</label>
-              <select id="interest" name="interest">
-                <option>AI Training</option>
-                <option>Corporate Workshop</option>
-                <option>IT Consulting</option>
-                <option>General Inquiry</option>
-              </select>
-            </div>
-          </div>
-
-          <div>
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Tell us what you are looking for..." required></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary">Send Inquiry</button>
-
-          <div class="success-message" id="successMessage">
-            Inquiry captured successfully. This is a demo form for now.
-          </div>
-
-          <p class="contact-note">
-            Replace this later with your real email, phone number, and form integration.
-          </p>
-        </form>
+        <p class="contact-note" style="margin-top: 20px; text-align: center;">
+          If the form doesn't load, 
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScOFIGZwlZNbl6uUDDQPumLW1dxi1LH2qOPF6pZdJ-nXlbVKw/viewform" target="_blank" style="color: var(--primary); text-decoration: underline;">
+            click here to open it in a new tab.
+          </a>
+        </p>
       </div>
     </div>
   </section>
@@ -693,17 +614,6 @@
       © 2026 AI Forge. AI Training • Workshops • IT Services
     </div>
   </footer>
-
-  <script>
-    const form = document.getElementById("contactForm");
-    const successMessage = document.getElementById("successMessage");
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      successMessage.style.display = "block";
-      form.reset();
-    });
-  </script>
 
 </body>
 </html>
